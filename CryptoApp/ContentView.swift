@@ -9,13 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color.black
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            VStack {
+                HStack {
+                    Text("Crypto App")
+                        .font(.largeTitle)
+                        .foregroundStyle(Color.mint)
+                    Button{
+                        // Incrémente les cryptos
+                    } label: {
+                        Image(systemName: "reload")
+                    }
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                }
+                
+                Spacer()
+            }
+            .padding()
+            
         }
-        .padding()
     }
 }
 
