@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var convertTo: String = "$"
     var body: some View {
         ZStack {
             Color.black
@@ -58,16 +59,20 @@ struct ContentView: View {
                     CurrencyView(name: "XLM",image: "stl",amount: 11)
                 }
                 Spacer()
-                HStack {
-                    Button("Convert To €"){
+                Button("Convert to \(convertTo)")
+                {
+                    if convertTo == "$" {
+                        convertTo = "€"
+                    } else if convertTo == "€" {
+                        convertTo = "$"
                     }
-                    .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
-                    .foregroundStyle(.white)
-                    .background(.mint)
-                    .cornerRadius(10)
                 }
+                .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
+                .foregroundStyle(.white)
+                .background(.mint)
+                .cornerRadius(10)
+                
             }
-            .padding()
         }
     }
 }
@@ -92,10 +97,11 @@ struct CurrencyView: View {
                 .font(.headline)
         }
     }
-
+    
     
 }
 
 #Preview {
     ContentView()
 }
+
