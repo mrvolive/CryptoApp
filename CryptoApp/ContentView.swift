@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var convertTo: String = "$"
+    @State var bias: Int = 0
     var body: some View {
         ZStack {
             Color.black
@@ -23,7 +24,7 @@ struct ContentView: View {
                         .foregroundStyle(.mint)
                     Spacer()
                     Button{
-                        // Incrémente les cryptos
+                        bias += 1
                     } label: {
                         Image(systemName: "arrow.clockwise.circle")
                             .resizable()
@@ -53,10 +54,10 @@ struct ContentView: View {
                 Spacer()
                 
                 HStack {
-                    CurrencyView(name: "BIT",image: "btc",amount: 51)
-                    CurrencyView(name: "ETH",image: "eth",amount: 21)
-                    CurrencyView(name: "XRP",image: "rpl",amount: 6)
-                    CurrencyView(name: "XLM",image: "stl",amount: 11)
+                    CurrencyView(name: "BIT",image: "btc",amount: 51 + bias)
+                    CurrencyView(name: "ETH",image: "eth",amount: 21 + bias)
+                    CurrencyView(name: "XRP",image: "rpl",amount: 6 + bias)
+                    CurrencyView(name: "XLM",image: "stl",amount: 11 + bias)
                 }
                 Spacer()
                 Button("Convert to \(convertTo)")
